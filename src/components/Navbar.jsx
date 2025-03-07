@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
 import Logo from '../assets/logo.png'
+import iconCart from '../assets/cartIcon.svg'
 
 function Navbar () {
   return (
@@ -10,10 +11,15 @@ function Navbar () {
           <NavLink to={'/'}>Home</NavLink>
         </li>
         <li>
-          <NavLink to={'/categorias'}>Productos</NavLink>
+          <NavLink to={'/products'}>Productos</NavLink>
         </li>
         <li>
           <NavLink to={'/contacto'}>Contacto</NavLink>
+        </li>
+        <li>
+          <NavLink to={'/carrito'}>
+            <img src={iconCart} />
+          </NavLink>
         </li>
       </ul>
     </nav>
