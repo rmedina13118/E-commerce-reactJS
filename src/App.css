@@ -1,6 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 #root {
   margin: 0 auto;
   text-align: center;
   background: #000;
   height: 100vh;
+  font-family: "DM Sans", sans-serif;
+}
+
+/*Neumorphism*/
+.neumorphism {
+  background: #ffb700;
+  box-shadow:
+    inset 10px 10px 20px #a66f00,
+    inset -6px -6px 10px #ffdb80,
+    inset 2px 2px 4px #a66f00,
+    inset -2px -2px 4px #ffdb80;
 }

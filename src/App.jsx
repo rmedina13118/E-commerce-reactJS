@@ -1,23 +1,25 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import { uploadProducts } from './uploadProducts'
+import { ProductsProvider } from './context/ProductContext'
+import Products from './pages/shop'
 
 function App () {
+
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<h1>Home</h1>} />
-          <Route path='/products' element={<h1>Productos</h1>} />
-          <Route path='/contact' element={<h1>Contacto</h1>} />
-        </Routes>
-      </BrowserRouter>
+      <ProductsProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<h1>Home</h1>} />
+            <Route path='/shop' element={<Products />} />
+            <Route path='/contacto' element={<h1>Contacto</h1>} />
+          </Routes>
+        </BrowserRouter>
+      </ProductsProvider>
     </>
   )
 }
-
-uploadProducts()
 
 export default App

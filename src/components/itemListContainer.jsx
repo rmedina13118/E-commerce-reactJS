@@ -1,52 +1,45 @@
-import { useState, useEffect } from 'react'
-import { db } from './firebase/firebaseConfig'
-import { collection, getDocs, query } from 'firebase/firestore'
-import { use } from 'react'
+import { useContext, useState, useEffect } from 'react'
+import { ProductsContext } from '../context/ProductContext'
+import '../App.css'
+import ItemList from './itemList'
+const ItemListContainer = () => {
+  const { products, categories, loading } = useContext(ProductsContext)
+  const [selectedCategory, setselectedCategory] = useState(
+    'Todos los productos'
+  )
 
-const itemListContainer = () => {
-  const [products, setProducts] = useState([])
-  const [categories, setCategories] = useState([])
+  console.log("esto es:" ,products )
 
-  useEffect(() => {
-    async function fetchData () {
-      const products = await getProducts()
-      setProducts(products)
+  const filteredProducts =
+    selectedCategory === 'Todos los productos'
+      ? products
+      : products.filter(product => product.category === selectedCategory)
 
-      const uniqueCategories = getUniqueCategories(products)
-      setCategories(uniqueCategories)
-    }
-
-    fetchData()
-  }, [])
-
-  async function getProducts () {
-    try {
-      const productsCollection = collection(db, 'products')
-      querySnapshot = await getDocs(productsCollection)
-
-      const products = querySnapshot.docs.map(doc => {
-        return {
-          id: doc.id,
-          ...doc.data()
-        }
-      })
-    } catch (error) {}
-  }
-
-  //   const [selectedCategory, seSelectedCategory] = useState(null)
-
-  //   const filteredProducts = selectedCategory
-  //     ? products.filter(product => product.category === selectedCategory)
-  //     : products
   return (
-    <div>
-      <h1>Productos</h1>
-      <div className=''>
-        <h2>Nuestras Categorias</h2>
-        <ul></ul>
+    <div className='py-10 px-20'>
+      <h1 className='text-[#ffb700] [text-shadow:inset_3px_2px_3px_rgba(255,255,255,0.2)] text-4xl text-center font-bold'>
+        Nuestros Productos
+      </h1>
+      <div className=' py-12 flex flex-col gap-8'>
+        <h2 className='text-[#ffb700] [text-shadow:inset_3px_2px_3px_rgba(255,255,255,0.2)] text-2xl text-left font-bold'>
+          Elige la Categoria que desees:
+        </h2>
+        <ul className='text-left flex flex-row gap-4'>
+          {categories.map(category => (
+            <li key={category}>
+              <button
+                className='bg-[#ffb700] text-black p-3 text-xl rounded-2xl font-bold neumorphism'
+                onClick={() => setselectedCategory(category)}
+              >
+                {category}
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
+      <ItemList />
     </div>
   )
 }
 
-export default itemListContainer
+export default ItemListContainer
