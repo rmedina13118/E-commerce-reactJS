@@ -37,7 +37,7 @@ const ItemListContainer = () => {
           ))}
         </ul>
       </div>
-      <ItemList />
+      <ItemList products={filteredProducts} />
     </div>
   )
 }

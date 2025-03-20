@@ -49,7 +49,8 @@ export const ProductsProvider = ({ children }) => {
     }
 
     fetchProducts()
-  }, []) // ✅ Se ejecuta solo al montar el componente
+  }, []) 
+  console.log("Estado de: ", {products, categories, loading})// ✅ Se ejecuta solo al montar el componente
 
   return (
     <ProductsContext.Provider value={{ products, categories, loading }}>
