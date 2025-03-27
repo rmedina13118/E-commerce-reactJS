@@ -2,7 +2,7 @@ import React from 'react'
 import ItemDetailContainer from './itemDetailContainer'
 
 const ItemList = ({ products = [] }) => {
-  console.log('📌 ItemList reciio los siguientes porductos: ', products);
+  console.log('📌 ItemList recbió los siguientes productos: ', products);
 
   return (
     <div>
