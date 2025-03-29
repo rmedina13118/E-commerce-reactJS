@@ -4,9 +4,11 @@ import Navbar from './components/Navbar'
 import { ProductsProvider } from './context/ProductContext'
 import Products from './pages/shop'
 import ProductPage from './pages/shop/productPage'
+import { uploadProducts } from './uploadProducts'
 
 function App() {
 
+  // uploadProducts() 
 
   return (
     <>
