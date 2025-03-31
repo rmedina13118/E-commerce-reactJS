@@ -1,24 +1,35 @@
-import { Link, NavLink } from 'react-router-dom'
-import Logo from '../assets/logo.png'
-import iconCart from '../assets/cartIcon.svg'
+import { Link, NavLink } from "react-router-dom"
+import Logo from "../assets/logo.png"
+import iconCart from "../assets/cartIcon.svg"
+import { useContext } from "react"
+import { CartContext } from "../context/cartContext"
 
-function Navbar () {
+function Navbar() {
+
+  const {cartQty} = useContext(CartContext)
   return (
-    <nav className='flex justify-between px-20 items-center max-w-[100vw] bg-[#ffb700] text-black font-bold text-2xl '>
-      <img src={Logo} width={100} height={100} className='w-20' />
-      <ul className='flex flex-row gap-8'>
+    <nav className="flex justify-between px-20 items-center max-w-[100vw] bg-[#ffb700] text-black font-bold text-2xl ">
+      <img src={Logo} width={100} height={100} className="w-20" />
+      <ul className="flex flex-row gap-8">
         <li>
-          <NavLink to={'/'}>Home</NavLink>
+          <NavLink to={"/"}>Home</NavLink>
         </li>
         <li>
-          <NavLink to={'/shop'}>Productos</NavLink>
+          <NavLink to={"/shop"}>Productos</NavLink>
         </li>
         <li>
-          <NavLink to={'/contacto'}>Contacto</NavLink>
+          <NavLink to={"/contacto"}>Contacto</NavLink>
         </li>
         <li>
-          <NavLink to={'/carrito'}>
-            <img src={iconCart} />
+          <NavLink to={"/carrito"} className={"relative"}>
+            <div>
+              <img src={iconCart} />
+              {cartQty > 0 && (
+                <span className="absolute bg-[#000] text-[#ffb700] rounded-full w-6 h-6 flex justify-center items-center text-sm font-bold top-[-10px] right-[-10px]">
+                  {cartQty}
+                </span>
+              )}
+            </div>
           </NavLink>
         </li>
       </ul>
