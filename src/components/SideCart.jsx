@@ -35,7 +35,7 @@ const SideCart = ({ CloseCart }) => {
       onClick={handleClose}
     >
       <div
-        className={`w-3/3 md:w-2/5 bg-white/60 h-full p-6 flex flex-col transform transition-transform duration-300 ease-in-out ${
+        className={`w-3/3 md:w-2/5 bg-white/80 h-full p-6 flex flex-col transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         onClick={(e) => e.stopPropagation()}
@@ -81,7 +81,7 @@ const SideCart = ({ CloseCart }) => {
         {cart.length > 0 && (
           <div className="flex justify-between mt-4 items-center relative">
             <div className="flex flex-col gap-2 border-black/50 border-2 rounded-lg py-5 px-3">
-              <p className="absolute -top-[15px] left-10 bg-[#a8a5a5] rounded-xl px-2  -translate-x-1/3 px text-black text-2xl font-bold uppercase">
+              <p className="absolute -top-[15px] left-10 bg-[#e0e0e0] px-2  -translate-x-1/3 px text-black text-2xl font-bold uppercase">
                 Total
               </p>
               <p className="text-4xl font-bold text-black">{cartTotal}</p>
