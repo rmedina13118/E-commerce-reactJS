@@ -1,5 +1,5 @@
 import React from "react";
-import ItemDetailContainer from "./itemDetailContainer";
+import ItemDetailContainer from "./IitemDetailContainer";
 
 const ItemList = ({ products = [] }) => {
   console.log("📌 ItemList recbió los siguientes productos: ", products);

@@ -1,60 +1,60 @@
-import { createContext, useState, useEffect } from 'react'
-import { collection, getDocs } from 'firebase/firestore'
-import { db } from '../firebase/firebaseConfig'
+import { createContext, useState, useEffect } from "react";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
 
-export const ProductsContext = createContext()
+export const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
-  console.log('📌 ProductProvider en ejecución')
+  console.log("📌 ProductProvider en ejecución");
 
-  // Estado para almacenar los productos y categorías
-  const [products, setProducts] = useState([])
-  const [categories, setCategories] = useState([])
-  const [loading, setLoading] = useState(true) // ✅ Estado de carga
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // ✅ useEffect se ejecuta solo una vez al montar el componente
+  const formatPrice = (amount) => {
+    return new Intl.NumberFormat("es-CO", {
+      style: "currency",
+      currency: "COP",
+      minimumFractionDigits: 0,
+    }).format(amount);
+  };
+
   useEffect(() => {
-    console.log('📌 useEffect se ejecutó en ProductContext')
+    console.log("📌 useEffect se ejecutó en ProductContext");
 
-    const fetchProducts = async () => {
-      try {
-        console.log('📌 Intentando obtener productos desde Firebase...')
-        const querySnapshot = await getDocs(collection(db, 'products'))
-
-        if (querySnapshot.empty) {
-          console.log('❌ No hay productos en Firebase')
-          setLoading(false)
-          return
-        }
-
-        const productsArray = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }))
-
-        console.log('📌 Productos obtenidos:', productsArray)
-        setProducts(productsArray)
-
-        // Extraer categorías únicas
-        const uniqueCategories = [
-          'Todos los productos',
-          ...new Set(productsArray.map(product => product.category))
-        ]
-        setCategories(uniqueCategories)
-      } catch (error) {
-        console.error('❌ Error obteniendo productos:', error)
-      } finally {
-        setLoading(false) // ✅ Marcar la carga como terminada
+    const unsubscribe = onSnapshot(collection(db, "products"), (snapshot) => {
+      if (snapshot.empty) {
+        console.log("❌ No hay productos en Firebase");
+        setProducts([]);
+        setLoading(false);
+        return;
       }
-    }
 
-    fetchProducts()
-  }, []) 
-  console.log("Estado de: ", {products, categories, loading})// ✅ Se ejecuta solo al montar el componente
+      const productsArray = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      console.log("📌 Productos actualizados:", productsArray);
+      setProducts(productsArray);
+
+      // Extraer categorías únicas
+      const uniqueCategories = [
+        "Todos los productos",
+        ...new Set(productsArray.map((product) => product.category)),
+      ];
+      setCategories(uniqueCategories);
+      setLoading(false);
+    });
+
+    return () => unsubscribe(); // Limpia el listener cuando se desmonta el componente
+  }, []);
+
+  console.log("Estado de:", { products, categories, loading, formatPrice });
 
   return (
-    <ProductsContext.Provider value={{ products, categories, loading }}>
+    <ProductsContext.Provider value={{ products, categories, loading, formatPrice }}>
       {children}
     </ProductsContext.Provider>
-  )
-}
+  );
+};

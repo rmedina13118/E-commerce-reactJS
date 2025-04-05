@@ -7,7 +7,14 @@
   text-align: center;
   background: #000;
   height: 100vh;
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans", sans-serif; 
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 /*Neumorphism*/
