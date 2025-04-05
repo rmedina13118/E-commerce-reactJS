@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../context/CartContext.jsx";
 
 const ItemDetail = ({ product }) => {
   const [qty, setQty] = useState(1);
