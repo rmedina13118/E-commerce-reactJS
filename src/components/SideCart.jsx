@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../context/CartContext.jsx";
 import closeIcon from "../assets/close.svg";
+import { CartContext } from "../context/CartContext";
 
 import CartItem from "./CartItem";
 

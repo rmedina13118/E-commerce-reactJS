@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import iconDelete from "../assets/delete.svg";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../context/CartContext.jsx";
 
 const CartItem = ({ item, removeFromCart }) => {
   const { formatPrice, updateQty, cart } = useContext(CartContext);

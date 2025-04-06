@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import Logo from "../assets/logo.png";
 import iconCart from "../assets/cartIcon.svg";
 import { useContext, useState } from "react";
-import { CartContext } from "../context/CartContext.jsx";
+import { CartContext } from "../context/CartContext";
 import SideCart from "./sideCart";
 
 function Navbar() {
