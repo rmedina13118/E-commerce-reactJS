@@ -1,9 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "../context/CartContext";
+import { ProductsContext } from "../context/ProductContext";
 
 const ItemDetail = ({ product }) => {
   const [qty, setQty] = useState(1);
   const { addToCart, cart } = useContext(CartContext);
+  const { formatPrice } = useContext(ProductsContext);
 
   if (!product) return null;
   const { img, category, name, price, stock, description, id } = product;
@@ -53,8 +55,8 @@ const ItemDetail = ({ product }) => {
         </p>
         <h2 className="text-2xl font-semibold">{name}</h2>
         <p className="text-3xl border-2 rounded-[8px] p-8 relative font-medium flex gap-2 flex-col items-start mt-6">
-          <span className="absolute bottom-20 bg-[#333] px-2">Precio</span> $
-          {price} - IVA Incluido
+          <span className="absolute bottom-20 bg-[#333] px-2">Precio</span>
+          {formatPrice(price)} - IVA Incluido
         </p>
         <div className="flex justify-start flex-row gap-6 w-[70%]">
           <div className="flex flex-row items-center h-[40px] rounded-md overflow-hidden text-black">
@@ -88,7 +90,7 @@ const ItemDetail = ({ product }) => {
 
         {warning && (
           <p className="text-red-600 font-medium text-md mt-2">{warning}</p>
-        )}                                                                    
+        )}
         <p className="italic text-lg">
           {availableStock > 0
             ? `${availableStock} unidad(es) disponibles`
