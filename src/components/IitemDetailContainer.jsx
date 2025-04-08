@@ -18,7 +18,7 @@ const ItemDetailContainer = ({ product }) => {
         <div className="flex items-center flex-col gap-2">
           <h2 className="text-[20px] font-medium">{product.name}</h2>
           <p className="text-[22px] font-semibold">
-            $ {formatPrice(product.price)}
+            {formatPrice(product.price)}
           </p>
           <p className="italic">{product.stock} Unidad(es) disponibles</p>
           <p className="uppercase">{product.category}</p>
