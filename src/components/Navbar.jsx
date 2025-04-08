@@ -1,9 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../assets/logo.png";
 import iconCart from "../assets/cartIcon.svg";
+
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
-import SideCart from "./sideCart";
+import { SideCart } from "./SideCart/SideCart";
 
 function Navbar() {
   const { cartQty } = useContext(CartContext);
@@ -45,7 +46,7 @@ function Navbar() {
           </li>
         </ul>
       </nav>
-      {isCartOpen && <SideCart CloseCart={closeCart} />}
+      {isCartOpen && <SideCart closeCart={closeCart} />}
     </>
   );
 }

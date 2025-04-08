@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import closeIcon from "../assets/close.svg";
-import { CartContext } from "../context/CartContext";
+import closeIcon from "../../assets/close.svg";
+import { CartContext } from "../../context/CartContext";
 
-import CartItem from "./CartItem";
+import CartItem from "../CartItem";
 
-const SideCart = ({ CloseCart }) => {
+ export const SideCart = ({ CloseCart }) => {
   const { cart, removeFromCart, cartTotal } = useContext(CartContext);
   const navigate = useNavigate();
 
@@ -95,5 +95,3 @@ const SideCart = ({ CloseCart }) => {
     </div>
   );
 };
-
-export default SideCart;
