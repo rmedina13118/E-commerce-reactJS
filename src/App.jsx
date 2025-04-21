@@ -7,7 +7,7 @@ import ProductPage from "./pages/shop/productPage";
 import Checkout from "./pages/Checkout";
 import Summary from "./pages/Summary";
 import Home from "./pages";
-import { NoFound } from "./pages/noFound";
+import { NoFound } from "./pages/NoFound";
 import { uploadProducts } from "./services/uploadProductsService";
 function App() {
   // uploadProducts()
