@@ -6,9 +6,9 @@ import Products from "./pages/shop";
 import ProductPage from "./pages/shop/productPage";
 import Checkout from "./pages/Checkout";
 import Summary from "./pages/Summary";
-import { uploadProducts } from "./services/uploadProductsService";
 import Home from "./pages";
-
+import { NoFound } from "./pages/noFound";
+import { uploadProducts } from "./services/uploadProductsService";
 function App() {
   // uploadProducts()
 
@@ -20,11 +20,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/shop" element={<Products />} />
-            <Route path="/contacto" element={<h1>Contacto</h1>} />
+            {/* <Route path="/contacto" element={<h1>Contacto</h1>} /> */}
             <Route path="/shop/:productId" element={<ProductPage />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/summary-order" element={<Summary />} />
-            <Route path="*" element={<h1>404</h1>} />
+            <Route path="*" element={<NoFound />} />
           </Routes>
         </BrowserRouter>
       </ProductsProvider>

@@ -35,7 +35,7 @@ const ProductPage = () => {
     }, [productId, products, loading])
 
     return (
-        <div className="py-10 px-20">
+        <div className="py-10 my-20 px-20">
             {showSpinner ? (
                 <div className="flex justify-center items-center h-[300px] ">
                     <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-[#ffb700]"></div>

@@ -20,20 +20,20 @@ function Navbar() {
 
   return (
     <>
-      <nav className="flex justify-between px-20 items-center max-w-[100vw] bg-[#ffb700] text-black font-bold text-2xl ">
+      <nav className="flex fixed top-0 w-full z-50 justify-between px-20 items-center max-w-[100vw] bg-[#ffb700] text-black font-bold text-2xl ">
         <NavLink to={"/"}>
           <img src={Logo} width={100} height={100} className="w-20" />
         </NavLink>
-        <ul className="flex flex-row gap-8">
+        <ul className="flex flex-row gap-12">
           <li>
             <NavLink to={"/"}>Home</NavLink>
           </li>
           <li>
             <NavLink to={"/shop"}>Productos</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to={"/contacto"}>Contacto</NavLink>
-          </li>
+          </li> */}
           <li>
             <button onClick={openCart} className="relative">
               <div>

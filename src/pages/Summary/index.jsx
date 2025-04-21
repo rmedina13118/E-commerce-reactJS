@@ -15,7 +15,7 @@ const Summary = () => {
 
   if (!orderId) {
     return (
-      <div className="flex flex-col items-center justify-center h-[70vh]">
+      <div className=" mt-20 flex flex-col items-center justify-center h-[70vh]">
         <p className="text-center text-black text-[24px] mb-6">
           No se encontraron detalles de la compra.
         </p>
@@ -30,7 +30,7 @@ const Summary = () => {
   }
 
   return (
-    <div className="flex flex-col gap-5 items-center justify-center w-fit p-6 bg-white/20 backdrop-blur-3xl mx-auto my-12 rounded-4xl border self-center">
+    <div className="mt-32 flex flex-col gap-5 items-center justify-center w-fit p-6 bg-white/20 backdrop-blur-3xl mx-auto  rounded-4xl border self-center">
       <h1 className="text-[#ffb700] text-4xl font-semibold mb-6">
         ¡Gracias por tu compra!
       </h1>
