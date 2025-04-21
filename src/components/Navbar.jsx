@@ -21,7 +21,9 @@ function Navbar() {
   return (
     <>
       <nav className="flex justify-between px-20 items-center max-w-[100vw] bg-[#ffb700] text-black font-bold text-2xl ">
-        <img src={Logo} width={100} height={100} className="w-20" />
+        <NavLink to={"/"}>
+          <img src={Logo} width={100} height={100} className="w-20" />
+        </NavLink>
         <ul className="flex flex-row gap-8">
           <li>
             <NavLink to={"/"}>Home</NavLink>
@@ -46,7 +48,7 @@ function Navbar() {
           </li>
         </ul>
       </nav>
-      {isCartOpen && <SideCart closeCart={closeCart} />}
+      {isCartOpen && <SideCart CloseCart={closeCart} />}
     </>
   );
 }

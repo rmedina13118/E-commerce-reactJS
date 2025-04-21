@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ProductsContext } from "../context/ProductContext";
 
 const ItemDetailContainer = ({ product }) => {
-  const { formatPrice } = useContext(ProductsContext);
+  const { formatPrice, products } = useContext(ProductsContext);
   if (!product) {
     return <div>Cargando...</div>;
   }
@@ -20,8 +20,16 @@ const ItemDetailContainer = ({ product }) => {
           <p className="text-[22px] font-semibold">
             {formatPrice(product.price)}
           </p>
-          <p className="italic">{product.stock} Unidad(es) disponibles</p>
           <p className="uppercase">{product.category}</p>
+          {product.stock <= 0 ? (
+            <p className="text-red-600 font-semibold italic text-[16px]">
+              Agotado
+            </p>
+          ) : (
+            <p className="italic text-green-600 font-semibold text-[16px]">
+              {product.stock} Unidad(es) disponibles
+            </p>
+          )}
         </div>
         <Link
           className="bg-[#ffb700] text-black p-[5px_10px] w-1/2 rounded-4xl text-[18px] font-semibold"

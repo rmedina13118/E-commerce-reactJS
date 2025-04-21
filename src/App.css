@@ -1,13 +1,20 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+@layer utilities {
+  .text-shadow-neumorphic {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
+      -1px -1px 4px rgba(255, 255, 255, 0.7), 1px 1px 1px rgba(0, 0, 0, 0.1);
+  }
+}
 
 #root {
   margin: 0 auto;
   text-align: center;
   background: #000;
   height: 100vh;
-  font-family: "DM Sans", sans-serif; 
+  font-family: "DM Sans", sans-serif;
   scrollbar-width: none;
 }
 
@@ -20,9 +27,6 @@
 /*Neumorphism*/
 .neumorphism {
   background: #ffb700;
-  box-shadow:
-    inset 10px 10px 20px #a66f00,
-    inset -6px -6px 10px #ffdb80,
-    inset 2px 2px 4px #a66f00,
-    inset -2px -2px 4px #ffdb80;
+  box-shadow: inset 10px 10px 20px #a66f00, inset -6px -6px 10px #ffdb80,
+    inset 2px 2px 4px #a66f00, inset -2px -2px 4px #ffdb80;
 }

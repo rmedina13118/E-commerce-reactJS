@@ -24,7 +24,7 @@ const CartItem = ({ item, removeFromCart }) => {
   };
 
   return (
-    <div className="flex flex-col gap-2 py-3 border-b">
+    <div className="flex flex-col gap-2 py-3">
       <div className="flex items-center justify-between gap-4">
         <div className="flex flex-row items-center gap-4">
           <div className="flex-shrink-0 w-32 h-auto">

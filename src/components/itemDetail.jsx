@@ -61,7 +61,7 @@ const ItemDetail = ({ product }) => {
         <div className="flex justify-start flex-row gap-6 w-[70%]">
           <div className="flex flex-row items-center h-[40px] rounded-md overflow-hidden text-black">
             <button
-              className="bg-[#ffb700] h-full px-3 font-semibold text-xl"
+              className="bg-[#ffb700] disabled:bg-[#ffc637c6] disabled:cursor-not-allowed h-full px-3 font-semibold text-xl cursor-pointer"
               onClick={handleDecrease}
             >
               -
@@ -72,7 +72,7 @@ const ItemDetail = ({ product }) => {
               className="focus:outline-none text-center bg-white h-full w-[40px]"
             />
             <button
-              className="bg-[#ffb700] h-full px-3 font-semibold text-xl"
+              className="bg-[#ffb700] disabled:bg-[#ffc637c6] disabled:cursor-not-allowed h-full px-3 font-semibold text-xl cursor-pointer"
               onClick={handleIncrease}
               disabled={availableStock === 0}
             >
@@ -80,7 +80,7 @@ const ItemDetail = ({ product }) => {
             </button>
           </div>
           <button
-            className="bg-[#ffb700] text-black p-[8px_10px] rounded-4xl text-[18px] font-semibold"
+            className="bg-[#ffb700] disabled:bg-[#ffc637c6] disabled:cursor-not-allowed text-black p-[8px_10px] rounded-4xl text-[18px] font-semibold cursor-pointer"
             onClick={handleAddToCart}
             disabled={availableStock === 0}
           >
@@ -91,11 +91,16 @@ const ItemDetail = ({ product }) => {
         {warning && (
           <p className="text-red-600 font-medium text-md mt-2">{warning}</p>
         )}
-        <p className="italic text-lg">
-          {availableStock > 0
-            ? `${availableStock} unidad(es) disponibles`
-            : "Sin stock disponible"}
-        </p>
+        {availableStock > 0 ? (
+          <p className="italic text-lg text-green-600 font-semibold">
+            {availableStock} unidad(es) disponibles
+          </p>
+        ) : (
+          <p className="text-red-600 text-lg font-semibold italic">
+            Sin stock disponible
+          </p>
+        )}
+
         <h4 className="font-medium text-2xl">Descripción:</h4>
         <p className="text-left text-xl w-[90%]">{description}</p>
       </div>
