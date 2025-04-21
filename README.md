@@ -2,7 +2,7 @@
 
 Musical House es una aplicación de comercio electrónico desarrollada con **ReactJS**, **Firebase** y **TailwindCSS**. Este proyecto permite a los usuarios explorar productos musicales, agregar artículos al carrito, realizar compras y gestionar pedidos.
 
-**Visita el proyecto aquí**: https://e-commerce-react-2knl8xp1a-rmedina13118s-projects.vercel.app/
+**Visita el proyecto aquí**: [https://e-commerce-react-2knl8xp1a-rmedina13118s-projects.vercel.app/](https://e-commerce-react-js-omega.vercel.app/)
 
 ## Características
 
